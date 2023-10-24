@@ -1,12 +1,12 @@
-Country Name,Country Code,Carbon Intensity [kgCO2]
-Australia,AUS,0.25
-Korea,KOR,0.18
-Japan,JPN,0.21
-New Zealand,NZL,0.14
-Thailand,THA,0.20
-Philippines,PHL,0.26
-Singapore,SGP,0.04
-Indonesia,IDN,0.29
-Malaysia,MYS,0.20
-Vietnam,VNM,0.27
-China,CHN,0.26
+Country Name,Country Code,Carbon Intensity [gCO2e]
+Australia,AUS,503
+Korea,KOR,436
+Japan,JPN,483
+New Zealand,NZL,98
+Thailand,THA,502
+Philippines,PHL,582
+Singapore,SGP,489
+Indonesia,IDN,619
+Malaysia,MYS,544
+Vietnam,VNM,377
+China,CHN,531
