@@ -5,4 +5,4 @@ impacts on East Asian and Pacific countries.
 """
 
 __version__ = "2.0.0"
-__author__ = "Lucas Ardo"
+__author__ = "Luca Sardo"
