@@ -71,32 +71,6 @@ jupyter notebook notebooks/CBAM_Analysis_Refactored.ipynb
 
 Run all cells to execute the complete analysis pipeline.
 
-#### Option 2: Using Python Scripts
-
-```python
-from src.data_loader import DataLoader
-from src.data_processing import DataProcessor
-from src.analysis import RiskAnalyzer
-
-# Load data
-loader = DataLoader()
-raw_data = loader.load_all()
-
-# Process data
-processor = DataProcessor()
-processed_data = {
-    'cbam_exports': processor.prepare_cbam_exports(raw_data['cbam_exports']),
-    # ... process other datasets
-}
-
-# Build comprehensive dataset
-comprehensive_df = processor.build_comprehensive_dataset(processed_data)
-
-# Normalize and analyze
-analysis_df = processor.normalize_columns(comprehensive_df)
-analyzer = RiskAnalyzer()
-results = analyzer.calculate_weighted_index(analysis_df, weights)
-```
 
 ## 📊 Methodology
 
@@ -122,25 +96,6 @@ The CBAM Comprehensive Risk Index combines six normalized components:
 5. **Normalization**: Scale all metrics to [0, 1] range using Min-Max scaling
 6. **Index Calculation**: Apply weighted sum to normalized components
 7. **Sensitivity Analysis**: Test alternative weighting schemes
-
-## 📈 Key Features
-
-### Modular Architecture
-- **Separation of Concerns**: Data loading, processing, visualization, and analysis in separate modules
-- **Reusability**: Functions can be imported and used in other projects
-- **Maintainability**: Easy to update individual components
-
-### Comprehensive Analysis
-- **Exploratory Data Analysis**: Visualizations for each dimension
-- **Risk Index Calculation**: Weighted composite index
-- **Sensitivity Analysis**: Multiple weighting scenarios
-- **Risk Categorization**: Group countries by risk level
-- **Driver Analysis**: Identify key risk factors per country
-
-### Professional Visualizations
-- Consistent styling across all plots
-- Export-ready high-quality figures
-- Interactive exploration in notebooks
 
 ## 📦 Module Documentation
 
@@ -178,27 +133,6 @@ sensitivity = analyzer.run_sensitivity_analysis(df)
 report = analyzer.generate_risk_report(df, index_col='Risk')
 ```
 
-## 🔬 Sensitivity Analysis
-
-The framework includes six pre-configured weighting scenarios:
-
-1. **Baseline**: Export exposure weighted 30%
-2. **Equal Weights**: All components weighted equally (16.6% each)
-3. **Export Focused**: Trade proportion weighted 30%
-4. **No Innovation**: Excludes innovation capacity
-5. **No Trade & Stats**: Excludes trade elasticity and statistical capacity
-6. **No Trade & Innovation**: Excludes trade elasticity and innovation
-
-Add custom scenarios in `src/config.py`:
-
-```python
-WEIGHT_SCENARIOS["custom"] = {
-    "ExpCBAMperGDP": 0.25,
-    "PctExpCBAM": 0.25,
-    # ... other components
-}
-```
-
 ## 📁 Output Files
 
 Results are saved to the `results/` directory:
@@ -209,17 +143,6 @@ Results are saved to the `results/` directory:
 - `sensitivity_analysis.png`: Multi-panel sensitivity comparison
 
 ## 🛠️ Development
-
-### Running Tests
-```bash
-pytest tests/
-```
-
-### Code Formatting
-```bash
-black src/
-flake8 src/
-```
 
 ### Adding New Datasets
 
@@ -245,44 +168,3 @@ Contributions are welcome! Please:
 3. Commit your changes (`git commit -am 'Add new feature'`)
 4. Push to the branch (`git push origin feature/improvement`)
 5. Create a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 👤 Author
-
-**Lucas Ardo**
-- GitHub: [@lucasardo](https://github.com/lucasardo)
-
-## 📝 Citation
-
-If you use this framework in your research, please cite:
-
-```bibtex
-@software{ardo2025cbam,
-  author = {Ardo, Lucas},
-  title = {CBAM East Asia Pacific Analysis: A Modular Risk Assessment Framework},
-  year = {2025},
-  url = {https://github.com/lucasardo/cbam-thesis}
-}
-```
-
-## 🔮 Future Improvements
-
-- [ ] Add automated data updates from APIs
-- [ ] Implement machine learning for risk prediction
-- [ ] Create interactive dashboard with Plotly/Dash
-- [ ] Add time-series analysis for trend detection
-- [ ] Expand to other regions beyond East Asia & Pacific
-- [ ] Include sector-specific analysis
-- [ ] Add Monte Carlo simulation for uncertainty quantification
-
-## 📞 Contact
-
-For questions or feedback, please open an issue on GitHub or contact the author directly.
-
----
-
-**Last Updated**: October 2025  
-**Version**: 2.0.0
